@@ -6,6 +6,29 @@
   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 
-    <bean id="helloWorld" class="com.stackroute.domain.HelloWorld" />
+
+
+    <bean id="quoteA" class="com.stackroute.domain.Quote" >
+        <property name="author" value="amit"></property>
+        <property name="quotation" value="Where there is a will there is a way"></property>
+
+    </bean>
+    <bean id="quoteB" class="com.stackroute.domain.Quote">
+        <constructor-arg name="author" value="urvashi"></constructor-arg>
+        <constructor-arg name="quotation" value="we dont talk anymore" ></constructor-arg>
+    </bean>
+    <bean id="quoteC" class="com.stackroute.domain.Quote">
+        <constructor-arg type="String" value="amrit"></constructor-arg>
+        <constructor-arg type="String" value="something"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorld" class="com.stackroute.domain.HelloWorld" scope="prototype">
+        <constructor-arg index="0" ref="quoteA"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorldA" class="com.stackroute.domain.HelloWorld" >
+        <constructor-arg index="0" ref="quoteB"></constructor-arg>
+
+    </bean>
 
 </beans>
