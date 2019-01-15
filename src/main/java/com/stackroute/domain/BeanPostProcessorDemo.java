@@ -1,0 +1,19 @@
+package com.stackroute.domain;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.lang.Nullable;
+
+public class BeanPostProcessorDemo implements BeanPostProcessor {
+
+     public  Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+         System.out.println("inside postProcessBeforeInitialization"+beanName);
+         return bean;
+    }
+
+
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("inside postProcessAfterInitialization " +beanName);
+        return bean;
+    }
+}

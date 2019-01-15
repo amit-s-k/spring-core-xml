@@ -3,32 +3,35 @@
 <beans xmlns = "http://www.springframework.org/schema/beans"
        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" default-init-method="customInit" default-destroy-method="customDestroy">
 
 
 
 
-    <bean id="quoteA" class="com.stackroute.domain.Quote" >
-        <property name="author" value="amit"></property>
-        <property name="quotation" value="Where there is a will there is a way"></property>
+    <!--<bean id="quote" class="com.stackroute.domain.Quote" >-->
+        <!--<property name="author" value="amit"></property>-->
+        <!--<property name="quotation" value="Where there is a will there is a way"></property>-->
 
-    </bean>
+    <!--</bean>-->
     <bean id="quoteB" class="com.stackroute.domain.Quote">
         <constructor-arg name="author" value="urvashi"></constructor-arg>
         <constructor-arg name="quotation" value="we dont talk anymore" ></constructor-arg>
     </bean>
-    <bean id="quoteC" class="com.stackroute.domain.Quote">
-        <constructor-arg type="String" value="amrit"></constructor-arg>
-        <constructor-arg type="String" value="something"></constructor-arg>
-    </bean>
+    <!--<bean id="quoteC" class="com.stackroute.domain.Quote">-->
+        <!--<constructor-arg type="String" value="amrit"></constructor-arg>-->
+        <!--<constructor-arg type="String" value="something"></constructor-arg>-->
+    <!--</bean>-->
 
-    <bean id="helloWorld" class="com.stackroute.domain.HelloWorld" scope="prototype">
-        <constructor-arg index="0" ref="quoteA"></constructor-arg>
+    <bean name="samplehello,helloWorld" class="com.stackroute.domain.HelloWorld" autowire="byType">
+        <!--<constructor-arg index="0" ref="quoteA"></constructor-arg>-->
+
     </bean>
+    <bean id="lifeCycleDemoBean" class="com.stackroute.domain.LifeCycleDemoBean" init-method="customInit" destroy-method="customDestroy2"></bean>
 
     <bean id="helloWorldA" class="com.stackroute.domain.HelloWorld" >
         <constructor-arg index="0" ref="quoteB"></constructor-arg>
 
     </bean>
+    <bean id="beanPostProcessorDemo" class="com.stackroute.domain.BeanPostProcessorDemo"></bean>
 
 </beans>

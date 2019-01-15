@@ -37,11 +37,13 @@ public class Main {
         Quote quote = helloWorld.getQuote();
         System.out.println(quote.getAuthor()+" wrote "+ quote.getQuotation());
 
-        HelloWorld helloWorld1= (HelloWorld) context.getBean("helloWorld");
+        HelloWorld helloWorld1= (HelloWorld) context.getBean("samplehello");
 
 //        Quote quote1 = helloWorld1.getQuote();
 //        System.out.println(quote1.getAuthor()+" wrote "+ quote1.getQuotation());
         System.out.println(helloWorld==helloWorld1);
+//        ((ClassPathXmlApplicationContext) context).close();
+        ((ClassPathXmlApplicationContext) context).registerShutdownHook();
 
 
 
